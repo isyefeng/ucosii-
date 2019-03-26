@@ -8,7 +8,7 @@ extern unsigned int ucTemp;
 OS_STK START_TASK_STK[START_STK_SIZE] = {0,};
 void start_task(void* arg);
 
-#define LED0_TASK_PRIO			7
+#define LED0_TASK_PRIO			4
 #define LED0_STK_SIZE			128
 OS_STK LED0_TASK_STK[LED0_STK_SIZE];
 void led0_task(void* arg);
@@ -16,6 +16,7 @@ void led0_task(void* arg);
 void Global_drv_init(void)
 {
 	Sysclock_init();
+	LED_G_Config();
 }
 
 int main(void)
@@ -43,7 +44,10 @@ void led0_task(void* arg)
 {
 	while(1)
 	{
-		OSTimeDly();
+		LED_G_TOGGLE;
+		OSTimeDly(10);
+		LED_G_TOGGLE;
+		OSTimeDly(10);
 	}
 }
 
