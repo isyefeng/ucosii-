@@ -25,6 +25,7 @@
 #include "stm32f10x_it.h"
 #include "TIM_Dirve.h"
 #include "LED.h"
+#include <ucos_ii.h>
 
 unsigned int ucTemp;
 
@@ -138,6 +139,9 @@ void DebugMon_Handler(void)
   */
 void SysTick_Handler(void)
 {
+	OSIntEnter();							
+	OSTimeTick();       					            
+	OSIntExit();       	 				
 }
 
 void EXTI0_IRQHandler (void)

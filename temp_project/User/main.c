@@ -3,19 +3,14 @@
 uint32_t time;
 extern unsigned int ucTemp;
 
-#define	START_STK_SIZE	1024
+#define	START_STK_SIZE	128
 #define	START_TASK_PRIO 3
 OS_STK START_TASK_STK[START_STK_SIZE] = {0,};
 void start_task(void* arg);
 
-//LED0任务
-//设置任务优先级
 #define LED0_TASK_PRIO			7
-//设置任务堆栈大小
 #define LED0_STK_SIZE			128
-//任务堆栈
 OS_STK LED0_TASK_STK[LED0_STK_SIZE];
-//任务函数
 void led0_task(void* arg);
 
 void Global_drv_init(void)
@@ -40,8 +35,6 @@ void start_task(void* arg)
 	
 	OS_ENTER_CRITICAL();  //进入临界区(关闭中断)
 	OSTaskCreate(led0_task,(void*)0,(OS_STK*)&LED0_TASK_STK[LED0_STK_SIZE-1],LED0_TASK_PRIO);//创建LED0任务
-//	OSTaskCreate(led1_task,(void*)0,(OS_STK*)&LED1_TASK_STK[LED1_STK_SIZE-1],LED1_TASK_PRIO);//创建LED1任务
-//	OSTaskCreate(float_task,(void*)0,(OS_STK*)&FLOAT_TASK_STK[FLOAT_STK_SIZE-1],FLOAT_TASK_PRIO);//创建浮点测试任务
 	OSTaskSuspend(START_TASK_PRIO);//挂起开始任务
 	OS_EXIT_CRITICAL();  //退出临界区(开中断)
 }
@@ -50,7 +43,7 @@ void led0_task(void* arg)
 {
 	while(1)
 	{
-		
+		OSTimeDly();
 	}
 }
 
