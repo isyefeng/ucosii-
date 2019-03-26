@@ -12,6 +12,7 @@
 #define 	LED_R_RCC  		RCC_APB2Periph_GPIOB
 
 #define   LED_G_TOGGLE   {GPIOB_ODR  ^= (unsigned int)0x0001;}
+#define   LED_R_TOGGLE   {GPIOB_ODR  ^= (unsigned int)0x0020;}
 
 #define ON  1
 #define OFF 0
