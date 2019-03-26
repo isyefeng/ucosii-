@@ -2,7 +2,7 @@
 .\objects\buz_dirve.o: ..\User\BUZ_Drive\BUZ_Dirve.h
 .\objects\buz_dirve.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\buz_dirve.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\buz_dirve.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\buz_dirve.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\buz_dirve.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\buz_dirve.o: ..\User\stm32f10x_conf.h
 .\objects\buz_dirve.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h

@@ -2,7 +2,7 @@
 .\objects\key_drive.o: ..\User\KEY_Drive\key_drive.h
 .\objects\key_drive.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\key_drive.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\key_drive.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\key_drive.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\key_drive.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\key_drive.o: ..\User\stm32f10x_conf.h
 .\objects\key_drive.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h

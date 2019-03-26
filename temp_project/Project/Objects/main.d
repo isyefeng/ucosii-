@@ -1,7 +1,16 @@
 .\objects\main.o: ..\User\main.c
+.\objects\main.o: ..\UCOSII\CONFIG\includes.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\main.o: ..\UCOSII\CODE\ucos_ii.h
+.\objects\main.o: ..\UCOSII\CONFIG\os_cfg.h
+.\objects\main.o: ..\UCOSII\PORT\os_cpu.h
 .\objects\main.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\main.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\main.o: ..\User\stm32f10x_conf.h
 .\objects\main.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h
@@ -28,7 +37,6 @@
 .\objects\main.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\objects\main.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\main.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
-.\objects\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\User\LED_Drive\LED.h
 .\objects\main.o: ..\User\KEY_Drive\key_drive.h
 .\objects\main.o: ..\User\EXTI_Drive\EXTI_Dirve.h

@@ -1,6 +1,11 @@
 #include "Systick_Dirve.h"
 #include "stm32f10x.h"
 
+void Sysclock_init(void)
+{
+	
+}
+
 void Delay_ms(uint32_t ms)
 {
 	uint32_t i;

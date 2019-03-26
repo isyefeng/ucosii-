@@ -2,7 +2,7 @@
 .\objects\exti_dirve.o: ..\User\EXTI_Drive\EXTI_Dirve.h
 .\objects\exti_dirve.o: ..\Libraries\CMSIS\stm32f10x.h
 .\objects\exti_dirve.o: ..\Libraries\CMSIS\core_cm3.h
-.\objects\exti_dirve.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\exti_dirve.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\exti_dirve.o: ..\Libraries\CMSIS\system_stm32f10x.h
 .\objects\exti_dirve.o: ..\User\stm32f10x_conf.h
 .\objects\exti_dirve.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h

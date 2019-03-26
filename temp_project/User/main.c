@@ -1,101 +1,56 @@
-#include "stm32f10x.h"
-#include "stdio.h"
-#include "LED.h"
-#include "key_drive.h"
-#include "EXTI_Dirve.h"		
-#include "BUZ_Dirve.h"
-#include "Systick_Dirve.h"
-#include "TIM_Dirve.h"
-#include "USART_Dirve.h"
+#include "includes.h"
 
 uint32_t time;
 extern unsigned int ucTemp;
 
-/*GPIO测试*/
-void gpio_test(void)
+#define	START_STK_SIZE	1024
+#define	START_TASK_PRIO 3
+OS_STK START_TASK_STK[START_STK_SIZE] = {0,};
+void start_task(void* arg);
+
+//LED0任务
+//设置任务优先级
+#define LED0_TASK_PRIO			7
+//设置任务堆栈大小
+#define LED0_STK_SIZE			128
+//任务堆栈
+OS_STK LED0_TASK_STK[LED0_STK_SIZE];
+//任务函数
+void led0_task(void* arg);
+
+void Global_drv_init(void)
 {
-	GPIO_InitTypeDef GPIO_LED;
-	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-	
-	GPIO_LED.GPIO_Pin = GPIO_Pin_9;
-	GPIO_LED.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_LED.GPIO_Mode = GPIO_Mode_Out_PP;
-	
-	GPIO_Init(GPIOB,&GPIO_LED);	
+	Sysclock_init();
 }
 
 int main(void)
 {
-	unsigned char str2[]={"请输入要亮的灯：例如：G/R/B"};
+	Global_drv_init();
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2); 
+	OSInit(); 
+	OSTaskCreate(start_task,(void*)0,(OS_STK*)&START_TASK_STK[START_STK_SIZE-1],START_TASK_PRIO); 
+	OSStart(); 
+}
+
+void start_task(void* arg)
+{
+	OS_CPU_SR cpu_sr=0;
+	arg=arg;
+	OSStatInit();  //开启统计任务
 	
-	LED_R_Config();
-	LED_G_Config();
-	LED_G_control(0);
-	LED_R_control(1);
-	TIMx_config();
-	
-	USART_Config();
-//	
-	printf("%s",str2);
-	gpio_test();
-	GPIO_SetBits(GPIOB,GPIO_Pin_9);
+	OS_ENTER_CRITICAL();  //进入临界区(关闭中断)
+	OSTaskCreate(led0_task,(void*)0,(OS_STK*)&LED0_TASK_STK[LED0_STK_SIZE-1],LED0_TASK_PRIO);//创建LED0任务
+//	OSTaskCreate(led1_task,(void*)0,(OS_STK*)&LED1_TASK_STK[LED1_STK_SIZE-1],LED1_TASK_PRIO);//创建LED1任务
+//	OSTaskCreate(float_task,(void*)0,(OS_STK*)&FLOAT_TASK_STK[FLOAT_STK_SIZE-1],FLOAT_TASK_PRIO);//创建浮点测试任务
+	OSTaskSuspend(START_TASK_PRIO);//挂起开始任务
+	OS_EXIT_CRITICAL();  //退出临界区(开中断)
+}
+
+void led0_task(void* arg)
+{
 	while(1)
 	{
-		#if 0
-		if(GPIO_ReadInputDataBit(GPIO_KEY1_RORT,GPIO_KEY1_PIN))
-		{
-			
-			while(GPIO_ReadInputDataBit(GPIO_KEY1_RORT,GPIO_KEY1_PIN));
-			
-			//LED_R_control(OFF);
-			LED_G_TOGGLE;
-		}
-		#elif 0
-		Pout(GPIOB_ODR_Addr,0)=1;
-		Delay_ms(500);
-		Pout(GPIOB_ODR_Addr,0)=0;
-		Delay_ms(500);
-		#elif 0
-		if(Pint(GPIOB_IDR_Addr,0))
-		{		
-			while(Pint(GPIOB_IDR_Addr,0));
-			LED_G_TOGGLE;
-		}
-		#elif 0
-		GPIO_ResetBits(GPIOA,GPIO_Pin_8);
-//	GPIO_SetBits(GPIOA,GPIO_Pin_8);
-		#elif 0
-		if(time==1000)
-		{
-			LED_G_TOGGLE;
-			time=0;
-		}
 		
-		#elif 0
-		if(time==1000)
-		{
-			//Usart_SendStr(USART1,str1);
-			printf("%s",str2);
-			time=0;
-		}
-		
-		#else 
-		
-		switch(ucTemp)
-		{
-			case 1:LED_G_control(1);LED_R_control(0);break;
-			case 2:LED_G_control(0);LED_R_control(1);break;
-		}
-		
-		if(time==1000)
-		{
-			//Usart_SendStr(USART1,str1);
-//			printf("%s\n",str2);
-			printf("%d\n",ucTemp);
-			time=0;
-		}
-		#endif
 	}
 }
 
