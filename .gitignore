@@ -1,0 +1,26 @@
+MDK/Objects/
+MDK/Listings/
+MDK/bin/
+MDK/DebugConfig/
+MDK/STMF4.uvguix.Administrator
+MDK/STMF4.uvoptx
+MDK/STMF1.uvguix.Administrator
+MDK/STMF1.uvoptx
+MDK/bin/
+MDK/JLinkLog.txt
+pro/
+source\ insight/
+BAK/
+
+*.lst
+*.map
+*.crf
+*.d
+*.o
+*.obj
+*.htm
+*.axf
+
+
+
+
