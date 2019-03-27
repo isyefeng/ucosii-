@@ -1,5 +1,4 @@
-#include "key_drive.h"
-#include "stm32f10x.h"
+#include "global_drv.h"
 
 void Key1_Init(void)
 {

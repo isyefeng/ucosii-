@@ -1,5 +1,4 @@
-#include "LED.h"
-#include "stm32f10x.h"
+#include "global_drv.h"
 
 void LED_G_Config(void)
 {

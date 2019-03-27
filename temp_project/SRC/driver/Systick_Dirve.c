@@ -1,5 +1,4 @@
-#include "Systick_Dirve.h"
-#include "stm32f10x.h"
+#include "global_drv.h"
 
 static u8  fac_us=0;							//us延时倍乘数			   
 static u16 fac_ms=0;							//ms延时倍乘数,在ucos下,代表每个节拍的ms数

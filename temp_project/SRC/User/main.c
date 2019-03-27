@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "global_drv.h"
 
 uint32_t time;
 extern unsigned int ucTemp;

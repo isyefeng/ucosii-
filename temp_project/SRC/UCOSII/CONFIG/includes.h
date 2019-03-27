@@ -23,13 +23,7 @@
 
 /*global driver include*/
 #include "stdio.h"
-#include "LED.h"
-#include "key_drive.h"
-#include "EXTI_Dirve.h"		
-#include "BUZ_Dirve.h"
-#include "Systick_Dirve.h"
-#include "TIM_Dirve.h"
-#include "USART_Dirve.h"
+
 
 
 #endif

@@ -1,6 +1,4 @@
-#include "TIM_Dirve.h"
-#include "stm32f10x.h"
-
+#include "global_drv.h"
 extern uint32_t time;
 
 static void NVIC_Config(void)

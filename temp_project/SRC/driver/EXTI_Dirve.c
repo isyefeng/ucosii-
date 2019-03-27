@@ -1,5 +1,4 @@
-#include "EXTI_Dirve.h"
-#include "stm32f10x.h"
+#include "global_drv.h"
 
 void NVIC_Init_config(void)
 {
